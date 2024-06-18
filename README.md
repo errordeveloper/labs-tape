@@ -1,10 +1,5 @@
 # Tape is for packaging applications
 
-## Disclaimer
-
-This project is an archived experiment that was done as part of Docker Labs and is no longer worked on.
-It's been made available by Docker Labs team under the Apache license as it's deemed of potential interest to the community, however, it's no longer in active development.
-
 ## What is Tape?
 
 Tape is a tool that can package an entire application as a self-contained (taped) OCI image that can be deployed to a
@@ -469,3 +464,5 @@ a particular app needs to be deployed with Helm, Kustomize, or something else.
 
 Tape was directly inspired by [flux push artifact](https://fluxcd.io/flux/cheatsheets/oci-artifacts/). Incidentally, it also resembles
 some of the aspects of CNAB, but it is much smaller in scope.
+
+Tape was originally created in Docker Labs under [docker/labs-tape](https://github.com/docker/labs-tape), and it's now maintained by the original author as [errordeveloper/tape](https://github.com/errordeveloper/tape).
