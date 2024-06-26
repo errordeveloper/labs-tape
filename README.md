@@ -89,7 +89,7 @@ git clone -q git@github.com:errordeveloper/tape.git ; cd ./labs-brown-tape
 
 Clone podinfo app repo:
 ```console
-(git clone -q https://github.com/stefanprodan/podinfo ; cd podinfo ; git switch --detach 6.4.1)
+(git clone -q https://github.com/stefanprodan/podinfo ; cd podinfo ; git switch --detach 6.7.0)
 ```
 
 Examine podinfo manifests:
@@ -97,43 +97,43 @@ Examine podinfo manifests:
 $ ./tape/tape images --output-format text --manifest-dir ./podinfo/kustomize
 INFO[0000] resolving image digests
 INFO[0000] resolving related images
-ghcr.io/stefanprodan/podinfo:6.4.1@sha256:92d43edf253c30782a1a9ceb970a718e6cb0454cff32a473e4f8a62dac355559
+ghcr.io/stefanprodan/podinfo:6.7.0@sha256:d2b3cd93a48acdc91327533ce28fcb3169b2d9feaf73817dc2eb68858df64edb
+  Alias: podinfo
   Sources:
-    ghcr.io/stefanprodan/podinfo:6.4.1 deployment.yaml:26:16@sha256:bb42d5f170c5c516b7c0f01ce16e82fff7b747c515e5a72dffe80395b52ac778
+    ghcr.io/stefanprodan/podinfo:6.7.0 deployment.yaml:26:16@sha256:5dcd7a6bd78c6d3613eefdea4747d2ba7e251ee355d793e165c9862ca7d69c9c
   Digest provided: false
   OCI manifests:
-    sha256:4163972f9a84fde6c8db0e7d29774fd988a7668fe26c67ac09a90a61a889c92d  application/vnd.oci.image.manifest.v1+json  linux/amd64  1625
-    sha256:e2d08f844f9af861a6ea5f47ce0f3fc45cfe3cc9f46f41ddbf8667f302711aea  application/vnd.oci.image.manifest.v1+json  linux/arm/v7  1625
-    sha256:1eb30e81513b6cd96e51b4298ab49b8812c0c33403fc1b730dbf23c280af4cf7  application/vnd.oci.image.manifest.v1+json  linux/arm64  1625
-    sha256:fd6487d2b151367fbb2b35576f5ac4bcf17d846f13133bf8f5f416eb796d2710  application/vnd.oci.image.manifest.v1+json  unknown/unknown  840
-    sha256:ddb4ee5ac923648fc01af3610c9090f2f22bb66a2d3a600b82fe4cb09d15c39b  application/vnd.oci.image.manifest.v1+json  unknown/unknown  840
-    sha256:d00c5c99beb6afddfcc3a6f3184bb91d14fdf27a41994542238751124f70332b  application/vnd.oci.image.manifest.v1+json  unknown/unknown  840
-  Inline attestations: 3
+    sha256:0060e4fc3052c383ea920673d08388fd6aa3bfc3536932f7c08edd4e4a616520  application/vnd.oci.image.manifest.v1+json  linux/amd64  1625
+    sha256:3ce55f0cfdb1200738bd3d0cd955866f09fe84edbb5930575a155beda649bde7  application/vnd.oci.image.manifest.v1+json  linux/arm/v7  1625
+    sha256:53d266d18dcd714920b0aed2c54b55d85bbf38ff59b931b4d6f6b6aca0da7e7d  application/vnd.oci.image.manifest.v1+json  linux/arm64  1625
+    sha256:064e58b3828b21d6c967c44deaab8a45748de84d137a4452a612a17979ade8c8  application/vnd.oci.image.manifest.v1+json  unknown/unknown  840
+    sha256:2bdce4c7c136cb08f3f4a8425dd0ab3fe5f8f76c8a2d4d98f23d6f60e52358c0  application/vnd.oci.image.manifest.v1+json  unknown/unknown  840
+    sha256:bf839dfebc879e6d39825ee2386bc3590d6d248a22282e0b268c38bde2cae874  application/vnd.oci.image.manifest.v1+json  unknown/unknown  840
   External attestations: 0
-  Inline SBOMs: 3
+  Inline SBOMs: 0
   External SBOMs: 0
   Inline signatures: 0
   External signatures: 1
+  Inline attestations: 0
 $
 ```
 
 Package podinfo:
 ```console
-$ ./tape/tape package --manifest-dir ./podinfo/kustomize --output-image ttl.sh/docker-labs-brown-tape/podinfo
-INFO[0000] VCS info for "./podinfo/kustomize": {"unmodified":true,"path":"kustomize","uri":"https://github.com/stefanprodan/podinfo","isDir":true,"git":{"objectHash":"e5f73cd48e13a37c7f7c7b116d7da41e9adf7fd6","remotes":{"origin":["https://github.com/stefanprodan/podinfo"]},"reference":{"name":"HEAD","hash":"4892983fd12e3ffffcd5a189b1549f2ef26b81c2","type":"hash-reference"}}}
-INFO[0000] resolving image digests
-INFO[0000] resolving related images
-INFO[0007] copying images
-INFO[0012] copied images: ttl.sh/docker-labs-brown-tape/podinfo:app.98767129386790b1a06737587330605eed510345e9b40824f8d48813513a086a@sha256:92d43edf253c30782a1a9ceb970a718e6cb0454cff32a473e4f8a62dac355559, ttl.sh/docker-labs-brown-tape/podinfo:sha256-92d43edf253c30782a1a9ceb970a718e6cb0454cff32a473e4f8a62dac355559.sig@sha256:ed4e1649736c14982b5fe8a25c31a644ee99b7cec232d987c78fe1ab77000dce
+$ INFO[0008] VCS info for "./podinfo/kustomize": {"unmodified":true,"path":"kustomize","uri":"https://github.com/stefanprodan/podinfo","isDir":true,"git":{"object":{"treeHash":"3f1d5f59fce5f67017dd007fe00131f6123896cf"},"remotes":{"origin":["https://github.com/stefanprodan/podinfo"]},"reference":{"name":"HEAD","hash":"0b1481aa8ed0a6c34af84f779824a74200d5c1d6","type":"hash-reference","tags":[{"name":"6.7.0","hash":"b0f4c201b5bf1923a0c04c7d2da3b8d66cd18e39","target":"0b1481aa8ed0a6c34af84f779824a74200d5c1d6","signature":{"pgp":"LS0tLS1CRUdJTiBQR1AgU0lHTkFUVVJFLS0tLS0KCmlIVUVBQkVJQUIwV0lRUUhnRXhVcjRGckxkS3pwTll5bWE2dzVBaGJyd1VDWm5ocFN3QUtDUkF5bWE2dzVBaGIKcitoZ0FQNDVSeStsOXlQQ1RKd1VER1lqMG9hZjZIZTZlcUZjNnQ2RjdpdkViazkwZVFEK09WYVN4Rm5LdGsyawpxR1Q3S0dZdy80ZlBJeDVnYUlIUFVzbksvR3B6azZNPQo9NllwZwotLS0tLUVORCBQR1AgU0lHTkFUVVJFLS0tLS0K","validated":false}}],"signature":{"pgp":"LS0tLS1CRUdJTiBQR1AgU0lHTkFUVVJFLS0tLS0KCndzRmNCQUFCQ0FBUUJRSm1lR2s5Q1JDMWFRN3V1NVVobEFBQUN2Z1FBR1drUG4xbXI2bGViaVlsRjJwZTRYY3gKVENQMkRQQVBnM2NnWExFQkt6dndlU0NCRXE1Zi9UaEVOT3lhOWlxYUFvQmRkM2Z6c1YrekdlTmpYRXFRTHI0dApuZkY1cE40THg4R2V2bzNyeXBESnlBd29kR2xFdEFEcjFrbEthSDFKSWZNdkFxaEExcmZMVElmQ01nTTNLVEF6CmczaHhOVXN0TnJoY2JETUZtYUVzaU5NeFRlTXBRSmlJcjBSRmJnVXcxWkhoU0NydzhISGxydjE5VC8wUWFXcnQKR1pjaHdzd2NOUHVEZm4vRjRCZlNEV2F2MjBUandMTmlxY2lndFgrQzBScVRqZkhVWnhjcSt4eWpCaTNnWHpTNQp0bGxEVzdneVJvR2pDdTAyZ2FiV3YwcnFtVUx1cHpHYTBYRUl6M0J5bDVwOXl3WFY3d1czdERjVkNLRU9YMzBnCnR2aWNkQ3B0Zjl2NlovZHRSNG1YM2lVeUdYRlZkM01xY2ptaGlqcEFJbW0yVXJORElVUVFRVkpkMzlGeE9uOVEKU29qd3N1b1FXYUhXbEdkWTdEWTVia2ZYM1cvNXNSZjlBVjdUemV5VjQvcmVnZ3EzSGY5ZC9QZEtaVEdLRXh3bwpUbXVNcTVUdmdVMWNjUTUzSkxrNVFGS0lzVmErZEh4SXd5YW5rcWNIbFBCRXlSSmtJajZlSVZRVldNQndCYUNhCkIvSnoxeGcweWc2SS9EZnRUQVdwTlBMUFQ2eFNBM09IZnZqQm1NblZGMzN0YnQ3Y3JtYVg0Wm5IbndZazZESVQKSUFNRkM4ay82OUZ6SFVRSWJJVTQrQk5CbVRpaTdnS2Y0cDlWNGRBNk95cTZFU1lkVlg2L2Z0OUNLMUY4eGxrQQpvSDNHMTI1dFdQQ0ZrTk9jb3ZGLwo9UnFzNwotLS0tLUVORCBQR1AgU0lHTkFUVVJFLS0tLS0KCg==","validated":false}}}} 
+INFO[0026] resolving image digests
+INFO[0027] resolving related images
+INFO[0033] copying images
+INFO[0087] copied images: ttl.sh/tape/podinfo:app.e1053e7cf3b59bec02980dd5cbbbb0cd151056e32810d25ee67ef52cb388a53f@sha256:d2b3cd93a48acdc91327533ce28fcb3169b2d9feaf73817dc2eb68858df64edb, ttl.sh/tape/podinfo:sha256-d2b3cd93a48acdc91327533ce28fcb3169b2d9feaf73817dc2eb68858df64edb.sig@sha256:ec3fea5d536913f3e1c30e9475279a32abeedb5bb2cb287ab90490f5388bdaf3, ttl.sh/tape/podinfo:app.e3f1195ebee343fd04dc8c447e98d1c85e8e9626fbb5078c0548d28dbb8153da@sha256:6601559170a45bf4fcecd113d1eba107d2d552adf58b389ccde39bf669ffa65a
 INFO[0012] updating manifest files
-INFO[0019] created package "ttl.sh/docker-labs-brown-tape/podinfo:config.ea816abb3c83c66181ff027115a84d930ec055ade76e3b7a861046df000bf75c@sha256:c4ef95c63f4572fbbdcc15270c2e2441b5aba753bc7d3a0cf8f7e3d8171b7c6d"
+INFO[0095] created package "ttl.sh/tape/podinfo:6.7.0@sha256:d42b82bcdeba762ce56c01ac36270df96bc4d4d37881fb866504305f942e55d1"
 $
 ```
 
 Store image name and config tag+digest as environment variables:
 ```console
-podinfo_image=ttl.sh/docker-labs-brown-tape/podinfo
-podinfo_config=${podinfo_image}:config.ea816abb3c83c66181ff027115a84d930ec055ade76e3b7a861046df000bf75c@sha256:c4ef95c63f4572fbbdcc15270c2e2441b5aba753bc7d3a0cf8f7e3d8171b7c6d
+podinfo_image="ttl.sh/tape/podinfo"
+podinfo_config="${podinfo_image}:6.7.0@sha256:d42b82bcdeba762ce56c01ac36270df96bc4d4d37881fb866504305f942e55d1"
 ```
 
 Examine the OCI index of the config image that's been created:
@@ -146,7 +146,7 @@ $ crane manifest "${podinfo_config}" | jq .
     {
       "mediaType": "application/vnd.oci.image.manifest.v1+json",
       "size": 625,
-      "digest": "sha256:1f8b36b04801367cf9302ebadb7ff8a55d4a6b388007ccdc1b423657486952e2",
+      "digest": "sha256:cac65fe10f725537d5d7393a0cd9ba15e7bb72d1029ab3a522b532e29f13743c",
       "platform": {
         "architecture": "unknown",
         "os": "unknown"
@@ -155,8 +155,8 @@ $ crane manifest "${podinfo_config}" | jq .
     },
     {
       "mediaType": "application/vnd.oci.image.manifest.v1+json",
-      "size": 1440,
-      "digest": "sha256:6b8bd7bdb30a489db183930676c48f191b52f94be23c05ce035f8a3a8d330a53",
+      "size": 1661,
+      "digest": "sha256:d9ab1a127981988fc82b70fad8079af9444f24b65580baca349df8032c51519a",
       "platform": {
         "architecture": "unknown",
         "os": "unknown"
@@ -179,13 +179,13 @@ $ crane manifest "${podinfo_image}@$(crane manifest "${podinfo_config}" | jq -r 
   "config": {
     "mediaType": "application/vnd.docker.tape.content.v1alpha1.tar+gzip",
     "size": 233,
-    "digest": "sha256:3a5b16a8c592ad85f9b16563f47d03e5b66430e4db3f4260f18325e44e91942e"
+    "digest": "sha256:fddda5c5f84b9041f1746f13ecb63bab559129228363fdb9e8b826aa6953be4e"
   },
   "layers": [
     {
       "mediaType": "application/vnd.docker.tape.content.v1alpha1.tar+gzip",
-      "size": 1182,
-      "digest": "sha256:ea816abb3c83c66181ff027115a84d930ec055ade76e3b7a861046df000bf75c"
+      "size": 1211,
+      "digest": "sha256:75967cdbb7c0a3439b46247b09c3d528dabb261586c12fa2f7b5df888baa238f"
     }
   ],
   "annotations": {
@@ -200,17 +200,17 @@ $ crane manifest "${podinfo_image}@$(crane manifest "${podinfo_config}" | jq -r 
   "config": {
     "mediaType": "application/vnd.docker.tape.attest.v1alpha1.jsonl+gzip",
     "size": 233,
-    "digest": "sha256:3c162e42a2bbd7ff794312811a1da7a2a39289d4f41c7ac0f63c487a0eb3ae1a"
+    "digest": "sha256:87b06d185f03315a2369ebbcc1d4e9a325e245735fd4e997af550bc4290f8338"
   },
   "layers": [
     {
       "mediaType": "application/vnd.docker.tape.attest.v1alpha1.jsonl+gzip",
-      "size": 892,
-      "digest": "sha256:9b4fdb608f604536f3740b4cdf9524f7d65ddd9e79c0d591383e2cc4970f4302"
+      "size": 2332,
+      "digest": "sha256:5bebe5e0d68cfb1202178a096707e4b79ca3d9569e6d40a1084b7c094430bbb0"
     }
   ],
   "annotations": {
-    "application/vnd.docker.tape.attestations-summary.v1alpha1": "eyJudW1TdGFtZW50ZXMiOjMsInByZWRpY2F0ZVR5cGVzIjpbImRvY2tlci5jb20vdGFwZS9NYW5pZmVzdERpci92MC4xIiwiZG9ja2VyLmNvbS90YXBlL09yaWdpbmFsSW1hZ2VSZWYvdjAuMSIsImRvY2tlci5jb20vdGFwZS9SZXNvbHZlZEltYWdlUmVmL3YwLjEiXSwic3ViamVjdCI6W3sibmFtZSI6Imt1c3RvbWl6ZS9kZXBsb3ltZW50LnlhbWwiLCJkaWdlc3QiOnsic2hhMjU2IjoiYmI0MmQ1ZjE3MGM1YzUxNmI3YzBmMDFjZTE2ZTgyZmZmN2I3NDdjNTE1ZTVhNzJkZmZlODAzOTViNTJhYzc3OCJ9fSx7Im5hbWUiOiJrdXN0b21pemUvaHBhLnlhbWwiLCJkaWdlc3QiOnsic2hhMjU2IjoiZDRiMmZmNmFmNjA3N2QwNjA2NTJiOTg0OWQwY2RhYjFlMjgxOGM2NGU1YjUwMWQ0MTRkODhjMjRkNWFiZGVmOCJ9fSx7Im5hbWUiOiJrdXN0b21pemUva3VzdG9taXphdGlvbi55YW1sIiwiZGlnZXN0Ijp7InNoYTI1NiI6Ijg5M2Y4OTYwZGVlZDM5NTkyZmQ0ZjQwMDRiNzBlMGIxYjZjNjkxYjRlNjI3MmRhMThhNDFjMTczNjBiNzcxZjUifX0seyJuYW1lIjoia3VzdG9taXplL3NlcnZpY2UueWFtbCIsImRpZ2VzdCI6eyJzaGEyNTYiOiJmMTg3NTY2ZjIxMmZjMTRlOWJlNjNkYWI3OWQ5ZGY1Y2ZhNzFkYzI4NDUwOWYyMjdlOWE0MjVkMTUyZmVlYzg1In19XX0K",
+    "application/vnd.docker.tape.attestations-summary.v1alpha1": "eyJudW1TdGFtZW50ZXMiOjQsInByZWRpY2F0ZVR5cGVzIjpbImRvY2tlci5jb20vdGFwZS9NYW5pZmVzdERpci92MC4yIiwiZG9ja2VyLmNvbS90YXBlL09yaWdpbmFsSW1hZ2VSZWYvdjAuMSIsImRvY2tlci5jb20vdGFwZS9SZXBsYWNlZEltYWdlUmVmL3YwLjEiLCJkb2NrZXIuY29tL3RhcGUvUmVzb2x2ZWRJbWFnZVJlZi92MC4xIl0sInN1YmplY3QiOlt7Im5hbWUiOiJrdXN0b21pemUvZGVwbG95bWVudC55YW1sIiwiZGlnZXN0Ijp7InNoYTI1NiI6IjVkY2Q3YTZiZDc4YzZkMzYxM2VlZmRlYTQ3NDdkMmJhN2UyNTFlZTM1NWQ3OTNlMTY1Yzk4NjJjYTdkNjljOWMifX0seyJuYW1lIjoia3VzdG9taXplL2RlcGxveW1lbnQueWFtbCIsImRpZ2VzdCI6eyJzaGEyNTYiOiJhZDg0ZGJkMTQ1MGE3NTJhZTZhZDFkOTkyNTAzMTBiZWNhOGZlNzAzMWRhNjlmNzJhN2EzOGZkOTVmMDJmZTM4In19LHsibmFtZSI6Imt1c3RvbWl6ZS9ocGEueWFtbCIsImRpZ2VzdCI6eyJzaGEyNTYiOiJkNGIyZmY2YWY2MDc3ZDA2MDY1MmI5ODQ5ZDBjZGFiMWUyODE4YzY0ZTViNTAxZDQxNGQ4OGMyNGQ1YWJkZWY4In19LHsibmFtZSI6Imt1c3RvbWl6ZS9rdXN0b21pemF0aW9uLnlhbWwiLCJkaWdlc3QiOnsic2hhMjU2IjoiODBkNjUyZTdmYTc2ZDQ3YTY1NWE2YmNkZDA5NmIyZmMzMmEzNTJiZjUzZmRjMTVlNjNlYTQ3ZTE5YTBiMTU1YyJ9fSx7Im5hbWUiOiJrdXN0b21pemUvc2VydmljZS55YW1sIiwiZGlnZXN0Ijp7InNoYTI1NiI6ImYxODc1NjZmMjEyZmMxNGU5YmU2M2RhYjc5ZDlkZjVjZmE3MWRjMjg0NTA5ZjIyN2U5YTQyNWQxNTJmZWVjODUifX1dfQo=",
     "org.opencontainers.image.created": "2023-08-30T11:05:44+01:00"
   }
 }
@@ -239,12 +239,12 @@ Examine attestations:
 $ crane blob ${podinfo_image}@${tape_attest_digest} | gunzip | jq .
 {
   "_type": "https://in-toto.io/Statement/v0.1",
-  "predicateType": "docker.com/tape/ManifestDir/v0.1",
+  "predicateType": "docker.com/tape/ManifestDir/v0.2",
   "subject": [
     {
       "name": "kustomize/deployment.yaml",
       "digest": {
-        "sha256": "bb42d5f170c5c516b7c0f01ce16e82fff7b747c515e5a72dffe80395b52ac778"
+        "sha256": "5dcd7a6bd78c6d3613eefdea4747d2ba7e251ee355d793e165c9862ca7d69c9c"
       }
     },
     {
@@ -256,7 +256,7 @@ $ crane blob ${podinfo_image}@${tape_attest_digest} | gunzip | jq .
     {
       "name": "kustomize/kustomization.yaml",
       "digest": {
-        "sha256": "893f8960deed39592fd4f4004b70e0b1b6c691b4e6272da18a41c17360b771f5"
+        "sha256": "80d652e7fa76d47a655a6bcdd096b2fc32a352bf53fdc15e63ea47e19a0b155c"
       }
     },
     {
@@ -281,7 +281,9 @@ $ crane blob ${podinfo_image}@${tape_attest_digest} | gunzip | jq .
               "uri": "https://github.com/stefanprodan/podinfo",
               "isDir": true,
               "git": {
-                "objectHash": "e5f73cd48e13a37c7f7c7b116d7da41e9adf7fd6",
+                "object": {
+                  "treeHash": "3f1d5f59fce5f67017dd007fe00131f6123896cf"
+                },
                 "remotes": {
                   "origin": [
                     "https://github.com/stefanprodan/podinfo"
@@ -289,8 +291,23 @@ $ crane blob ${podinfo_image}@${tape_attest_digest} | gunzip | jq .
                 },
                 "reference": {
                   "name": "HEAD",
-                  "hash": "4892983fd12e3ffffcd5a189b1549f2ef26b81c2",
-                  "type": "hash-reference"
+                  "hash": "0b1481aa8ed0a6c34af84f779824a74200d5c1d6",
+                  "type": "hash-reference",
+                  "tags": [
+                    {
+                      "name": "6.7.0",
+                      "hash": "b0f4c201b5bf1923a0c04c7d2da3b8d66cd18e39",
+                      "target": "0b1481aa8ed0a6c34af84f779824a74200d5c1d6",
+                      "signature": {
+                        "pgp": "LS0tLS1CRUdJTiBQR1AgU0lHTkFUVVJFLS0tLS0KCmlIVUVBQkVJQUIwV0lRUUhnRXhVcjRGckxkS3pwTll5bWE2dzVBaGJyd1VDWm5ocFN3QUtDUkF5bWE2dzVBaGIKcitoZ0FQNDVSeStsOXlQQ1RKd1VER1lqMG9hZjZIZTZlcUZjNnQ2RjdpdkViazkwZVFEK09WYVN4Rm5LdGsyawpxR1Q3S0dZdy80ZlBJeDVnYUlIUFVzbksvR3B6azZNPQo9NllwZwotLS0tLUVORCBQR1AgU0lHTkFUVVJFLS0tLS0K",
+                        "validated": false
+                      }
+                    }
+                  ],
+                  "signature": {
+                    "pgp": "LS0tLS1CRUdJTiBQR1AgU0lHTkFUVVJFLS0tLS0KCndzRmNCQUFCQ0FBUUJRSm1lR2s5Q1JDMWFRN3V1NVVobEFBQUN2Z1FBR1drUG4xbXI2bGViaVlsRjJwZTRYY3gKVENQMkRQQVBnM2NnWExFQkt6dndlU0NCRXE1Zi9UaEVOT3lhOWlxYUFvQmRkM2Z6c1YrekdlTmpYRXFRTHI0dApuZkY1cE40THg4R2V2bzNyeXBESnlBd29kR2xFdEFEcjFrbEthSDFKSWZNdkFxaEExcmZMVElmQ01nTTNLVEF6CmczaHhOVXN0TnJoY2JETUZtYUVzaU5NeFRlTXBRSmlJcjBSRmJnVXcxWkhoU0NydzhISGxydjE5VC8wUWFXcnQKR1pjaHdzd2NOUHVEZm4vRjRCZlNEV2F2MjBUandMTmlxY2lndFgrQzBScVRqZkhVWnhjcSt4eWpCaTNnWHpTNQp0bGxEVzdneVJvR2pDdTAyZ2FiV3YwcnFtVUx1cHpHYTBYRUl6M0J5bDVwOXl3WFY3d1czdERjVkNLRU9YMzBnCnR2aWNkQ3B0Zjl2NlovZHRSNG1YM2lVeUdYRlZkM01xY2ptaGlqcEFJbW0yVXJORElVUVFRVkpkMzlGeE9uOVEKU29qd3N1b1FXYUhXbEdkWTdEWTVia2ZYM1cvNXNSZjlBVjdUemV5VjQvcmVnZ3EzSGY5ZC9QZEtaVEdLRXh3bwpUbXVNcTVUdmdVMWNjUTUzSkxrNVFGS0lzVmErZEh4SXd5YW5rcWNIbFBCRXlSSmtJajZlSVZRVldNQndCYUNhCkIvSnoxeGcweWc2SS9EZnRUQVdwTlBMUFQ2eFNBM09IZnZqQm1NblZGMzN0YnQ3Y3JtYVg0Wm5IbndZazZESVQKSUFNRkM4ay82OUZ6SFVRSWJJVTQrQk5CbVRpaTdnS2Y0cDlWNGRBNk95cTZFU1lkVlg2L2Z0OUNLMUY4eGxrQQpvSDNHMTI1dFdQQ0ZrTk9jb3ZGLwo9UnFzNwotLS0tLUVORCBQR1AgU0lHTkFUVVJFLS0tLS0KCg==",
+                    "validated": false
+                  }
                 }
               }
             },
@@ -299,10 +316,13 @@ $ crane blob ${podinfo_image}@${tape_attest_digest} | gunzip | jq .
               "path": "kustomize/deployment.yaml",
               "uri": "https://github.com/stefanprodan/podinfo",
               "digest": {
-                "sha256": "bb42d5f170c5c516b7c0f01ce16e82fff7b747c515e5a72dffe80395b52ac778"
+                "sha256": "5dcd7a6bd78c6d3613eefdea4747d2ba7e251ee355d793e165c9862ca7d69c9c"
               },
               "git": {
-                "objectHash": "97c65ceffd80290eeab72dd9b7f94bdf59df9960",
+                "object": {
+                  "treeHash": "0045078cfd7ba0b31492b814c18f191aeffef3cd",
+                  "commitHash": "ff32a1fc4b45b2fd2850e7204e5af7ef44ea1c73"
+                },
                 "remotes": {
                   "origin": [
                     "https://github.com/stefanprodan/podinfo"
@@ -310,8 +330,23 @@ $ crane blob ${podinfo_image}@${tape_attest_digest} | gunzip | jq .
                 },
                 "reference": {
                   "name": "HEAD",
-                  "hash": "4892983fd12e3ffffcd5a189b1549f2ef26b81c2",
-                  "type": "hash-reference"
+                  "hash": "0b1481aa8ed0a6c34af84f779824a74200d5c1d6",
+                  "type": "hash-reference",
+                  "tags": [
+                    {
+                      "name": "6.7.0",
+                      "hash": "b0f4c201b5bf1923a0c04c7d2da3b8d66cd18e39",
+                      "target": "0b1481aa8ed0a6c34af84f779824a74200d5c1d6",
+                      "signature": {
+                        "pgp": "LS0tLS1CRUdJTiBQR1AgU0lHTkFUVVJFLS0tLS0KCmlIVUVBQkVJQUIwV0lRUUhnRXhVcjRGckxkS3pwTll5bWE2dzVBaGJyd1VDWm5ocFN3QUtDUkF5bWE2dzVBaGIKcitoZ0FQNDVSeStsOXlQQ1RKd1VER1lqMG9hZjZIZTZlcUZjNnQ2RjdpdkViazkwZVFEK09WYVN4Rm5LdGsyawpxR1Q3S0dZdy80ZlBJeDVnYUlIUFVzbksvR3B6azZNPQo9NllwZwotLS0tLUVORCBQR1AgU0lHTkFUVVJFLS0tLS0K",
+                        "validated": false
+                      }
+                    }
+                  ],
+                  "signature": {
+                    "pgp": "LS0tLS1CRUdJTiBQR1AgU0lHTkFUVVJFLS0tLS0KCndzRmNCQUFCQ0FBUUJRSm1lR2s5Q1JDMWFRN3V1NVVobEFBQUN2Z1FBR1drUG4xbXI2bGViaVlsRjJwZTRYY3gKVENQMkRQQVBnM2NnWExFQkt6dndlU0NCRXE1Zi9UaEVOT3lhOWlxYUFvQmRkM2Z6c1YrekdlTmpYRXFRTHI0dApuZkY1cE40THg4R2V2bzNyeXBESnlBd29kR2xFdEFEcjFrbEthSDFKSWZNdkFxaEExcmZMVElmQ01nTTNLVEF6CmczaHhOVXN0TnJoY2JETUZtYUVzaU5NeFRlTXBRSmlJcjBSRmJnVXcxWkhoU0NydzhISGxydjE5VC8wUWFXcnQKR1pjaHdzd2NOUHVEZm4vRjRCZlNEV2F2MjBUandMTmlxY2lndFgrQzBScVRqZkhVWnhjcSt4eWpCaTNnWHpTNQp0bGxEVzdneVJvR2pDdTAyZ2FiV3YwcnFtVUx1cHpHYTBYRUl6M0J5bDVwOXl3WFY3d1czdERjVkNLRU9YMzBnCnR2aWNkQ3B0Zjl2NlovZHRSNG1YM2lVeUdYRlZkM01xY2ptaGlqcEFJbW0yVXJORElVUVFRVkpkMzlGeE9uOVEKU29qd3N1b1FXYUhXbEdkWTdEWTVia2ZYM1cvNXNSZjlBVjdUemV5VjQvcmVnZ3EzSGY5ZC9QZEtaVEdLRXh3bwpUbXVNcTVUdmdVMWNjUTUzSkxrNVFGS0lzVmErZEh4SXd5YW5rcWNIbFBCRXlSSmtJajZlSVZRVldNQndCYUNhCkIvSnoxeGcweWc2SS9EZnRUQVdwTlBMUFQ2eFNBM09IZnZqQm1NblZGMzN0YnQ3Y3JtYVg0Wm5IbndZazZESVQKSUFNRkM4ay82OUZ6SFVRSWJJVTQrQk5CbVRpaTdnS2Y0cDlWNGRBNk95cTZFU1lkVlg2L2Z0OUNLMUY4eGxrQQpvSDNHMTI1dFdQQ0ZrTk9jb3ZGLwo9UnFzNwotLS0tLUVORCBQR1AgU0lHTkFUVVJFLS0tLS0KCg==",
+                    "validated": false
+                  }
                 }
               }
             },
@@ -323,7 +358,10 @@ $ crane blob ${podinfo_image}@${tape_attest_digest} | gunzip | jq .
                 "sha256": "d4b2ff6af6077d060652b9849d0cdab1e2818c64e5b501d414d88c24d5abdef8"
               },
               "git": {
-                "objectHash": "263e9128848695fec5ab76c7f864b11ec98c2149",
+                "object": {
+                  "treeHash": "263e9128848695fec5ab76c7f864b11ec98c2149",
+                  "commitHash": "607303dca9fee3d97e1bd78f9997512bcb78da42"
+                },
                 "remotes": {
                   "origin": [
                     "https://github.com/stefanprodan/podinfo"
@@ -331,8 +369,23 @@ $ crane blob ${podinfo_image}@${tape_attest_digest} | gunzip | jq .
                 },
                 "reference": {
                   "name": "HEAD",
-                  "hash": "4892983fd12e3ffffcd5a189b1549f2ef26b81c2",
-                  "type": "hash-reference"
+                  "hash": "0b1481aa8ed0a6c34af84f779824a74200d5c1d6",
+                  "type": "hash-reference",
+                  "tags": [
+                    {
+                      "name": "6.7.0",
+                      "hash": "b0f4c201b5bf1923a0c04c7d2da3b8d66cd18e39",
+                      "target": "0b1481aa8ed0a6c34af84f779824a74200d5c1d6",
+                      "signature": {
+                        "pgp": "LS0tLS1CRUdJTiBQR1AgU0lHTkFUVVJFLS0tLS0KCmlIVUVBQkVJQUIwV0lRUUhnRXhVcjRGckxkS3pwTll5bWE2dzVBaGJyd1VDWm5ocFN3QUtDUkF5bWE2dzVBaGIKcitoZ0FQNDVSeStsOXlQQ1RKd1VER1lqMG9hZjZIZTZlcUZjNnQ2RjdpdkViazkwZVFEK09WYVN4Rm5LdGsyawpxR1Q3S0dZdy80ZlBJeDVnYUlIUFVzbksvR3B6azZNPQo9NllwZwotLS0tLUVORCBQR1AgU0lHTkFUVVJFLS0tLS0K",
+                        "validated": false
+                      }
+                    }
+                  ],
+                  "signature": {
+                    "pgp": "LS0tLS1CRUdJTiBQR1AgU0lHTkFUVVJFLS0tLS0KCndzRmNCQUFCQ0FBUUJRSm1lR2s5Q1JDMWFRN3V1NVVobEFBQUN2Z1FBR1drUG4xbXI2bGViaVlsRjJwZTRYY3gKVENQMkRQQVBnM2NnWExFQkt6dndlU0NCRXE1Zi9UaEVOT3lhOWlxYUFvQmRkM2Z6c1YrekdlTmpYRXFRTHI0dApuZkY1cE40THg4R2V2bzNyeXBESnlBd29kR2xFdEFEcjFrbEthSDFKSWZNdkFxaEExcmZMVElmQ01nTTNLVEF6CmczaHhOVXN0TnJoY2JETUZtYUVzaU5NeFRlTXBRSmlJcjBSRmJnVXcxWkhoU0NydzhISGxydjE5VC8wUWFXcnQKR1pjaHdzd2NOUHVEZm4vRjRCZlNEV2F2MjBUandMTmlxY2lndFgrQzBScVRqZkhVWnhjcSt4eWpCaTNnWHpTNQp0bGxEVzdneVJvR2pDdTAyZ2FiV3YwcnFtVUx1cHpHYTBYRUl6M0J5bDVwOXl3WFY3d1czdERjVkNLRU9YMzBnCnR2aWNkQ3B0Zjl2NlovZHRSNG1YM2lVeUdYRlZkM01xY2ptaGlqcEFJbW0yVXJORElVUVFRVkpkMzlGeE9uOVEKU29qd3N1b1FXYUhXbEdkWTdEWTVia2ZYM1cvNXNSZjlBVjdUemV5VjQvcmVnZ3EzSGY5ZC9QZEtaVEdLRXh3bwpUbXVNcTVUdmdVMWNjUTUzSkxrNVFGS0lzVmErZEh4SXd5YW5rcWNIbFBCRXlSSmtJajZlSVZRVldNQndCYUNhCkIvSnoxeGcweWc2SS9EZnRUQVdwTlBMUFQ2eFNBM09IZnZqQm1NblZGMzN0YnQ3Y3JtYVg0Wm5IbndZazZESVQKSUFNRkM4ay82OUZ6SFVRSWJJVTQrQk5CbVRpaTdnS2Y0cDlWNGRBNk95cTZFU1lkVlg2L2Z0OUNLMUY4eGxrQQpvSDNHMTI1dFdQQ0ZrTk9jb3ZGLwo9UnFzNwotLS0tLUVORCBQR1AgU0lHTkFUVVJFLS0tLS0KCg==",
+                    "validated": false
+                  }
                 }
               }
             },
@@ -341,10 +394,13 @@ $ crane blob ${podinfo_image}@${tape_attest_digest} | gunzip | jq .
               "path": "kustomize/kustomization.yaml",
               "uri": "https://github.com/stefanprodan/podinfo",
               "digest": {
-                "sha256": "893f8960deed39592fd4f4004b70e0b1b6c691b4e6272da18a41c17360b771f5"
+                "sha256": "80d652e7fa76d47a655a6bcdd096b2fc32a352bf53fdc15e63ea47e19a0b155c"
               },
               "git": {
-                "objectHash": "470e464dfb87f30f136fb0626b16eddf2f874843",
+                "object": {
+                  "treeHash": "f6a64bbfd5edefa203d3e639afc9cd2546c2778b",
+                  "commitHash": "4c0dfaef0ee72480f7873f819657c83d78127bf5"
+                },
                 "remotes": {
                   "origin": [
                     "https://github.com/stefanprodan/podinfo"
@@ -352,8 +408,23 @@ $ crane blob ${podinfo_image}@${tape_attest_digest} | gunzip | jq .
                 },
                 "reference": {
                   "name": "HEAD",
-                  "hash": "4892983fd12e3ffffcd5a189b1549f2ef26b81c2",
-                  "type": "hash-reference"
+                  "hash": "0b1481aa8ed0a6c34af84f779824a74200d5c1d6",
+                  "type": "hash-reference",
+                  "tags": [
+                    {
+                      "name": "6.7.0",
+                      "hash": "b0f4c201b5bf1923a0c04c7d2da3b8d66cd18e39",
+                      "target": "0b1481aa8ed0a6c34af84f779824a74200d5c1d6",
+                      "signature": {
+                        "pgp": "LS0tLS1CRUdJTiBQR1AgU0lHTkFUVVJFLS0tLS0KCmlIVUVBQkVJQUIwV0lRUUhnRXhVcjRGckxkS3pwTll5bWE2dzVBaGJyd1VDWm5ocFN3QUtDUkF5bWE2dzVBaGIKcitoZ0FQNDVSeStsOXlQQ1RKd1VER1lqMG9hZjZIZTZlcUZjNnQ2RjdpdkViazkwZVFEK09WYVN4Rm5LdGsyawpxR1Q3S0dZdy80ZlBJeDVnYUlIUFVzbksvR3B6azZNPQo9NllwZwotLS0tLUVORCBQR1AgU0lHTkFUVVJFLS0tLS0K",
+                        "validated": false
+                      }
+                    }
+                  ],
+                  "signature": {
+                    "pgp": "LS0tLS1CRUdJTiBQR1AgU0lHTkFUVVJFLS0tLS0KCndzRmNCQUFCQ0FBUUJRSm1lR2s5Q1JDMWFRN3V1NVVobEFBQUN2Z1FBR1drUG4xbXI2bGViaVlsRjJwZTRYY3gKVENQMkRQQVBnM2NnWExFQkt6dndlU0NCRXE1Zi9UaEVOT3lhOWlxYUFvQmRkM2Z6c1YrekdlTmpYRXFRTHI0dApuZkY1cE40THg4R2V2bzNyeXBESnlBd29kR2xFdEFEcjFrbEthSDFKSWZNdkFxaEExcmZMVElmQ01nTTNLVEF6CmczaHhOVXN0TnJoY2JETUZtYUVzaU5NeFRlTXBRSmlJcjBSRmJnVXcxWkhoU0NydzhISGxydjE5VC8wUWFXcnQKR1pjaHdzd2NOUHVEZm4vRjRCZlNEV2F2MjBUandMTmlxY2lndFgrQzBScVRqZkhVWnhjcSt4eWpCaTNnWHpTNQp0bGxEVzdneVJvR2pDdTAyZ2FiV3YwcnFtVUx1cHpHYTBYRUl6M0J5bDVwOXl3WFY3d1czdERjVkNLRU9YMzBnCnR2aWNkQ3B0Zjl2NlovZHRSNG1YM2lVeUdYRlZkM01xY2ptaGlqcEFJbW0yVXJORElVUVFRVkpkMzlGeE9uOVEKU29qd3N1b1FXYUhXbEdkWTdEWTVia2ZYM1cvNXNSZjlBVjdUemV5VjQvcmVnZ3EzSGY5ZC9QZEtaVEdLRXh3bwpUbXVNcTVUdmdVMWNjUTUzSkxrNVFGS0lzVmErZEh4SXd5YW5rcWNIbFBCRXlSSmtJajZlSVZRVldNQndCYUNhCkIvSnoxeGcweWc2SS9EZnRUQVdwTlBMUFQ2eFNBM09IZnZqQm1NblZGMzN0YnQ3Y3JtYVg0Wm5IbndZazZESVQKSUFNRkM4ay82OUZ6SFVRSWJJVTQrQk5CbVRpaTdnS2Y0cDlWNGRBNk95cTZFU1lkVlg2L2Z0OUNLMUY4eGxrQQpvSDNHMTI1dFdQQ0ZrTk9jb3ZGLwo9UnFzNwotLS0tLUVORCBQR1AgU0lHTkFUVVJFLS0tLS0KCg==",
+                    "validated": false
+                  }
                 }
               }
             },
@@ -365,7 +436,10 @@ $ crane blob ${podinfo_image}@${tape_attest_digest} | gunzip | jq .
                 "sha256": "f187566f212fc14e9be63dab79d9df5cfa71dc284509f227e9a425d152feec85"
               },
               "git": {
-                "objectHash": "9450823d5a09afc116a37ee16da12f53a6f4836d",
+                "object": {
+                  "treeHash": "9450823d5a09afc116a37ee16da12f53a6f4836d",
+                  "commitHash": "93e338a9641f1979039a517b23cca1a2f08d3dce"
+                },
                 "remotes": {
                   "origin": [
                     "https://github.com/stefanprodan/podinfo"
@@ -373,8 +447,23 @@ $ crane blob ${podinfo_image}@${tape_attest_digest} | gunzip | jq .
                 },
                 "reference": {
                   "name": "HEAD",
-                  "hash": "4892983fd12e3ffffcd5a189b1549f2ef26b81c2",
-                  "type": "hash-reference"
+                  "hash": "0b1481aa8ed0a6c34af84f779824a74200d5c1d6",
+                  "type": "hash-reference",
+                  "tags": [
+                    {
+                      "name": "6.7.0",
+                      "hash": "b0f4c201b5bf1923a0c04c7d2da3b8d66cd18e39",
+                      "target": "0b1481aa8ed0a6c34af84f779824a74200d5c1d6",
+                      "signature": {
+                        "pgp": "LS0tLS1CRUdJTiBQR1AgU0lHTkFUVVJFLS0tLS0KCmlIVUVBQkVJQUIwV0lRUUhnRXhVcjRGckxkS3pwTll5bWE2dzVBaGJyd1VDWm5ocFN3QUtDUkF5bWE2dzVBaGIKcitoZ0FQNDVSeStsOXlQQ1RKd1VER1lqMG9hZjZIZTZlcUZjNnQ2RjdpdkViazkwZVFEK09WYVN4Rm5LdGsyawpxR1Q3S0dZdy80ZlBJeDVnYUlIUFVzbksvR3B6azZNPQo9NllwZwotLS0tLUVORCBQR1AgU0lHTkFUVVJFLS0tLS0K",
+                        "validated": false
+                      }
+                    }
+                  ],
+                  "signature": {
+                    "pgp": "LS0tLS1CRUdJTiBQR1AgU0lHTkFUVVJFLS0tLS0KCndzRmNCQUFCQ0FBUUJRSm1lR2s5Q1JDMWFRN3V1NVVobEFBQUN2Z1FBR1drUG4xbXI2bGViaVlsRjJwZTRYY3gKVENQMkRQQVBnM2NnWExFQkt6dndlU0NCRXE1Zi9UaEVOT3lhOWlxYUFvQmRkM2Z6c1YrekdlTmpYRXFRTHI0dApuZkY1cE40THg4R2V2bzNyeXBESnlBd29kR2xFdEFEcjFrbEthSDFKSWZNdkFxaEExcmZMVElmQ01nTTNLVEF6CmczaHhOVXN0TnJoY2JETUZtYUVzaU5NeFRlTXBRSmlJcjBSRmJnVXcxWkhoU0NydzhISGxydjE5VC8wUWFXcnQKR1pjaHdzd2NOUHVEZm4vRjRCZlNEV2F2MjBUandMTmlxY2lndFgrQzBScVRqZkhVWnhjcSt4eWpCaTNnWHpTNQp0bGxEVzdneVJvR2pDdTAyZ2FiV3YwcnFtVUx1cHpHYTBYRUl6M0J5bDVwOXl3WFY3d1czdERjVkNLRU9YMzBnCnR2aWNkQ3B0Zjl2NlovZHRSNG1YM2lVeUdYRlZkM01xY2ptaGlqcEFJbW0yVXJORElVUVFRVkpkMzlGeE9uOVEKU29qd3N1b1FXYUhXbEdkWTdEWTVia2ZYM1cvNXNSZjlBVjdUemV5VjQvcmVnZ3EzSGY5ZC9QZEtaVEdLRXh3bwpUbXVNcTVUdmdVMWNjUTUzSkxrNVFGS0lzVmErZEh4SXd5YW5rcWNIbFBCRXlSSmtJajZlSVZRVldNQndCYUNhCkIvSnoxeGcweWc2SS9EZnRUQVdwTlBMUFQ2eFNBM09IZnZqQm1NblZGMzN0YnQ3Y3JtYVg0Wm5IbndZazZESVQKSUFNRkM4ay82OUZ6SFVRSWJJVTQrQk5CbVRpaTdnS2Y0cDlWNGRBNk95cTZFU1lkVlg2L2Z0OUNLMUY4eGxrQQpvSDNHMTI1dFdQQ0ZrTk9jb3ZGLwo9UnFzNwotLS0tLUVORCBQR1AgU0lHTkFUVVJFLS0tLS0KCg==",
+                    "validated": false
+                  }
                 }
               }
             }
@@ -391,15 +480,35 @@ $ crane blob ${podinfo_image}@${tape_attest_digest} | gunzip | jq .
     {
       "name": "kustomize/deployment.yaml",
       "digest": {
-        "sha256": "bb42d5f170c5c516b7c0f01ce16e82fff7b747c515e5a72dffe80395b52ac778"
+        "sha256": "5dcd7a6bd78c6d3613eefdea4747d2ba7e251ee355d793e165c9862ca7d69c9c"
       }
     }
   ],
   "predicate": {
     "foundImageReference": {
-      "reference": "ghcr.io/stefanprodan/podinfo:6.4.1",
+      "reference": "ghcr.io/stefanprodan/podinfo:6.7.0",
       "line": 26,
       "column": 16
+    }
+  }
+}
+{
+  "_type": "https://in-toto.io/Statement/v0.1",
+  "predicateType": "docker.com/tape/ReplacedImageRef/v0.1",
+  "subject": [
+    {
+      "name": "kustomize/deployment.yaml",
+      "digest": {
+        "sha256": "ad84dbd1450a752ae6ad1d99250310beca8fe7031da69f72a7a38fd95f02fe38"
+      }
+    }
+  ],
+  "predicate": {
+    "replacedImageReference": {
+      "reference": "ttl.sh/tape/podinfo:app.e1053e7cf3b59bec02980dd5cbbbb0cd151056e32810d25ee67ef52cb388a53f@sha256:d2b3cd93a48acdc91327533ce28fcb3169b2d9feaf73817dc2eb68858df64edb",
+      "line": 26,
+      "column": 16,
+      "alias": "podinfo"
     }
   }
 }
@@ -410,13 +519,13 @@ $ crane blob ${podinfo_image}@${tape_attest_digest} | gunzip | jq .
     {
       "name": "kustomize/deployment.yaml",
       "digest": {
-        "sha256": "bb42d5f170c5c516b7c0f01ce16e82fff7b747c515e5a72dffe80395b52ac778"
+        "sha256": "5dcd7a6bd78c6d3613eefdea4747d2ba7e251ee355d793e165c9862ca7d69c9c"
       }
     }
   ],
   "predicate": {
     "resolvedImageReference": {
-      "reference": "ghcr.io/stefanprodan/podinfo:6.4.1@sha256:92d43edf253c30782a1a9ceb970a718e6cb0454cff32a473e4f8a62dac355559",
+      "reference": "ghcr.io/stefanprodan/podinfo:6.7.0@sha256:d2b3cd93a48acdc91327533ce28fcb3169b2d9feaf73817dc2eb68858df64edb",
       "line": 26,
       "column": 16,
       "alias": "podinfo"
