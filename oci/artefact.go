@@ -11,6 +11,7 @@ import (
 	"maps"
 	"os"
 	"path/filepath"
+	"strings"
 	"time"
 
 	"golang.org/x/mod/semver"
@@ -394,21 +395,51 @@ func SemVerTagsFromAttestations(ctx context.Context, tag name.Tag, sourceAttesta
 		return []name.Tag{}
 	}
 	ref := groupSummary.Git.Reference
-	if len(ref.Tags) == 0 {
+	numTags := len(ref.Tags)
+	if numTags == 0 {
 		return []name.Tag{}
 	}
-	// TODO: detect tags with groupSummary.Path+"/" as prefix and priorities them
-	tags := make([]name.Tag, 0, len(ref.Tags))
+	tags := newTagtagSet(numTags)
+	scopedTags := newTagtagSet(numTags)
 	for i := range ref.Tags {
 		t := ref.Tags[i].Name
-		if semver.IsValid(t) || semver.IsValid("v"+t) {
-			tags = append(tags, tag.Context().Tag(ref.Tags[i].Name))
+		// this is accounts only for a simple case where tape is pointed at a dir
+		// and a tags have prefix that matches it exactly, it won't work for cases
+		// where tape is pointed at a subdir a parent of which has a scoped tag
+		if strings.HasPrefix(t, groupSummary.Path+"/") {
+			scopedTags.add(strings.TrimPrefix(t, groupSummary.Path+"/"), tag)
+			continue
+		}
+		tags.add(t, tag)
+	}
+	if len(scopedTags.list) > 0 {
+		return scopedTags.list
+	}
+	return tags.list
+}
+
+type tagSet struct {
+	set  map[string]struct{}
+	list []name.Tag
+}
+
+func newTagtagSet(c int) *tagSet {
+	return &tagSet{
+		set:  make(map[string]struct{}, c),
+		list: make([]name.Tag, 0, c),
+	}
+}
+
+func (s *tagSet) add(t string, image name.Tag) {
+	if !strings.HasPrefix(t, "v") {
+		t = "v" + t
+	}
+	if _, ok := s.set[t]; !ok {
+		if semver.IsValid(t) {
+			s.list = append(s.list, image.Context().Tag(t))
+			s.set[t] = struct{}{}
 		}
 	}
-	if len(tags) == 0 {
-		return []name.Tag{}
-	}
-	return tags
 }
 
 func makeDescriptorWithPlatform() Descriptor {
