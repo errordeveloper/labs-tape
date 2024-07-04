@@ -377,6 +377,10 @@ func (c *PathChecker) Check() (bool, bool, error) {
 			}
 			unmodified, _, err := isBlobUnmodified(worktree, &f.Blob, filepath.Join(repoPath, f.Name))
 			if err != nil {
+				if f.Mode == filemode.Symlink {
+					// TODO: should at least log a warning for broken symlink
+					return nil
+				}
 				return err
 			}
 			if !unmodified {
@@ -508,6 +512,9 @@ func findByPath(repo *gogit.Repository, path string) (object.Object, error) {
 	if err != nil {
 		return nil, err
 	}
+	if path == "." {
+		return tree, nil
+	}
 	treeEntry, err := tree.FindEntry(path)
 	switch err {
 	case nil:
@@ -527,12 +534,12 @@ func findByPath(repo *gogit.Repository, path string) (object.Object, error) {
 }
 
 func detectRepo(path string) (*gogit.Repository, bool) {
+	if repo, err := gogit.PlainOpen(path); err == nil {
+		return repo, true
+	}
 	dir := filepath.Dir(path)
 	if dir == path { // reached root
 		return nil, false
-	}
-	if repo, err := gogit.PlainOpen(dir); err == nil {
-		return repo, true
 	}
 	return detectRepo(dir)
 }
