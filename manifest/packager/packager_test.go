@@ -43,9 +43,9 @@ func makePackagerTest(tc testdata.TestCase) func(t *testing.T) {
 		loader := loader.NewRecursiveManifestDirectoryLoader(tc.Directory)
 		g.Expect(loader.Load()).To(Succeed())
 
-		pathChecker, attreg, err := attest.DetectVCS(tc.Directory)
+		repoDetected, attreg, err := attest.DetectVCS(tc.Directory)
 		g.Expect(err).NotTo(HaveOccurred())
-		g.Expect(pathChecker).ToNot(BeNil())
+		g.Expect(repoDetected).To(BeTrue())
 		g.Expect(attreg).ToNot(BeNil())
 
 		scanner := imagescanner.NewDefaultImageScanner()

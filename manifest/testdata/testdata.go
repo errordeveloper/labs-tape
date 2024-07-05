@@ -24,6 +24,7 @@ func (tcs TestCases) Run(t *testing.T, pathToRootDir string, doTest func(tc Test
 		t.Run(tcs[i].Description, doTest(tcs[i]))
 	}
 }
+
 func (tcs TestCases) makeRelativeTo(dir string) {
 	for i := range tcs {
 		tcs[i].Directory = filepath.Join(dir, tcs[i].Directory)
